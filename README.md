@@ -1,2 +1,4 @@
-# directory-tree
-A simple directory listing, tree visualization.
+# TreeDir
+A simple directory listing, in tree visualization. Is that all? Yeahhh! lol
+
+![alt text](static/ss.jpg)
