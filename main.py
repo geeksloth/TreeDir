@@ -1,4 +1,4 @@
 from treedir import treedir
 
 
-treedir('E:/Music', level=3)
+treedir('E:', level=3)
