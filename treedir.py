@@ -1,5 +1,4 @@
 def treedir(dir_path, level: int=-1, limit_to_directories: bool=False, length_limit: int=200):
-	"""Given a directory Path object print a visual tree structure"""
 	# I modified the official pathlib library to ignore some system directory to avoid the access deny error.
 	# Alternately, you can change it to use the official one with latest update instead, eg, from pathlib import Path
 	from mypathlib import Path
@@ -9,13 +8,13 @@ def treedir(dir_path, level: int=-1, limit_to_directories: bool=False, length_li
 	tee =    '├── '
 	last =   '└── '
 	print(dir_path)
-	dir_path = Path(dir_path) # accept string coerceable to Path
+	dir_path = Path(dir_path)
 	files = 0
 	directories = 0
 	def inner(dir_path: Path, prefix: str='', level=-1):
 		nonlocal files, directories
 		if not level: 
-			return # 0, stop iterating
+			return
 		if limit_to_directories:
 			contents = [d for d in dir_path.iterdir() if d.is_dir()]
 		else: 
@@ -30,7 +29,6 @@ def treedir(dir_path, level: int=-1, limit_to_directories: bool=False, length_li
 					yield from inner(path, prefix=prefix+extension, level=level-1)
 				except KeyError:
 					pass
-					#print(KeyError)
 			elif not limit_to_directories:
 				yield prefix + pointer + path.name
 				files += 1
